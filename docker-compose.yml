@@ -1,0 +1,25 @@
+version: "3.3"
+
+services:
+  boilerplate-api:
+    image: boilerplate
+    build:
+      context: .
+      dockerfile: ./Dockerfile.dev    
+    volumes:
+      - .:/app
+      - logs_d:/logs
+    env_file:
+      - ./.env
+    ports:
+      - "${PORT}:${PORT}"
+      - "${PORT_DEBUG}:${PORT_DEBUG}"
+    command: npm run debug
+    networks:
+      - boilerplate-network
+networks:
+  boilerplate-network:
+    external: true
+volumes:
+  logs_d:
+    external: true

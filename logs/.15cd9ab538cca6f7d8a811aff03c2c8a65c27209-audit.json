@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "logs\\.15cd9ab538cca6f7d8a811aff03c2c8a65c27209-audit.json",
+    "files": [
+        {
+            "date": 1663900747956,
+            "name": "logs\\bff-api-2022-09-22.log",
+            "hash": "ae05bc1c7b14e318393e658e1880b179c1cf818303d379763b2c4828d8871f7f"
+        }
+    ],
+    "hashType": "sha256"
+}

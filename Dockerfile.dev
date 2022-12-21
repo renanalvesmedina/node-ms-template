@@ -1,0 +1,29 @@
+FROM node:11.15.0
+
+# Application
+
+# Create code directory
+WORKDIR /app
+
+COPY package.json ./
+
+# Change timezone to America/Bahia
+RUN	export DEBIAN_FRONTEND=noninteractive && \
+	apt-get install -y tzdata && \
+	ln -fs /usr/share/zoneinfo/America/Bahia /etc/localtime && \
+	dpkg-reconfigure --frontend noninteractive tzdata
+
+RUN npm install
+
+RUN npm i -g typescript@4.8.3
+RUN npm i -g pm2
+RUN npm i -g nodemon
+
+COPY . /app
+
+RUN tsc
+
+EXPOSE 8080
+EXPOSE 8081
+
+CMD [ "npm", "run", "start:prod" ]
